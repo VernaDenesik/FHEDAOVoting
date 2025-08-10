@@ -1,0 +1,7 @@
+daovoting/
+node_modules/
+*.log
+*.md
+README*
+.env*
+.git/
