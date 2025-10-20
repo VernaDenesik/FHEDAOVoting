@@ -1,6 +1,5 @@
 # 🗳️ Secure Governance Voting System
 
-[![Tests](https://github.com/your-repo/governance-voting/workflows/Tests/badge.svg)](https://github.com/your-repo/governance-voting/actions)
 [![Coverage](https://codecov.io/gh/your-repo/governance-voting/branch/main/graph/badge.svg)](https://codecov.io/gh/your-repo/governance-voting)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Solidity](https://img.shields.io/badge/Solidity-0.8.24-blue)](https://soliditylang.org/)
@@ -9,6 +8,9 @@
 
 **🌐 Live Demo**: [View on Sepolia](https://sepolia.etherscan.io/address/0x08C09eC71Fe5CF02ce7E9bcfCBC406e052EA0248)
 
+**Website**: [https://fhedao-voting.vercel.app/](https://fhedao-voting.vercel.app/)
+
+**Demo Video**: Available in project repository (`demo.mp4`)
 ---
 
 ## 📋 Table of Contents
