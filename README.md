@@ -6,8 +6,6 @@
 
 > A privacy-preserving DAO voting platform using cryptographic commit-reveal schemes to ensure fair, manipulation-resistant governance on Ethereum.
 
-**🌐 Live Demo**: [View on Sepolia](https://sepolia.etherscan.io/address/0x08C09eC71Fe5CF02ce7E9bcfCBC406e052EA0248)
-
 **Website**: [https://fhedao-voting.vercel.app/](https://fhedao-voting.vercel.app/)
 
 **Demo Video**: Available in project repository (`demo.mp4`)
