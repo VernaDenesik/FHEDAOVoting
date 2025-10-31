@@ -1,0 +1,41 @@
+{
+  "name": "fhevm-sdk",
+  "version": "1.0.0",
+  "description": "Universal FHEVM SDK for building confidential dApps - Framework agnostic encryption and decryption utilities",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "jest",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "fhevm",
+    "encryption",
+    "decryption",
+    "privacy",
+    "confidential",
+    "ethereum",
+    "web3",
+    "eip712"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "ethers": "^6.0.0"
+  },
+  "dependencies": {
+    "fhevmjs": "^0.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "jest": "^29.0.0",
+    "@types/jest": "^29.0.0"
+  }
+}
