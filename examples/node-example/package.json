@@ -1,0 +1,16 @@
+{
+  "name": "node-fhevm-example",
+  "version": "1.0.0",
+  "description": "Node.js example using FHEVM SDK",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "fhevm-sdk": "file:../../packages/fhevm-sdk",
+    "ethers": "^6.4.0",
+    "dotenv": "^16.0.0"
+  }
+}
