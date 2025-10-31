@@ -11,6 +11,8 @@
 
 **Website**: [https://fhedao-voting.vercel.app/](https://fhedao-voting.vercel.app/)
 
+---
+
 **Demo Video**: Available in project repository (`demo.mp4`)
 ---
 
