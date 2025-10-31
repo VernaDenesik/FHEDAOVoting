@@ -3,6 +3,9 @@
 [![Coverage](https://codecov.io/gh/your-repo/governance-voting/branch/main/graph/badge.svg)](https://codecov.io/gh/your-repo/governance-voting)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Solidity](https://img.shields.io/badge/Solidity-0.8.24-blue)](https://soliditylang.org/)
+[![React](https://img.shields.io/badge/React-18.2-61DAFB?logo=react)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-5.0-646CFF?logo=vite)](https://vitejs.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?logo=typescript)](https://www.typescriptlang.org/)
 
 > A privacy-preserving DAO voting platform using cryptographic commit-reveal schemes to ensure fair, manipulation-resistant governance on Ethereum.
 
@@ -15,6 +18,7 @@
 
 - [✨ Features](#-features)
 - [🏗️ Architecture](#️-architecture)
+- [💻 Technology Stack](#-technology-stack)
 - [🚀 Quick Start](#-quick-start)
 - [🔧 Technical Implementation](#-technical-implementation)
 - [🧪 Testing](#-testing)
@@ -55,6 +59,14 @@
 - **Pre-commit Hooks** - Automated quality gates with Husky
 - **CI/CD Pipeline** - GitHub Actions with 5 parallel jobs
 - **Comprehensive Docs** - 9 documentation files covering all aspects
+
+### 💫 Modern Frontend (NEW)
+- **React 18 Application** - Component-based UI with hooks and context
+- **Vite Build Tool** - Lightning-fast HMR and optimized production builds
+- **FHEVM SDK Integration** - Custom hooks for wallet and contract management
+- **Responsive Design** - Mobile-first UI with glass-morphism effects
+- **Real-time Updates** - Live proposal status and voting statistics
+- **TypeScript Ready** - Full type safety for better developer experience
 
 ---
 
@@ -139,6 +151,183 @@ SecureDAOVoting.sol
 
 ---
 
+## 💻 Technology Stack
+
+### Backend / Smart Contracts
+
+#### Core Blockchain
+- **Solidity**: ^0.8.24 - Smart contract programming language
+- **Hardhat**: ^2.19.0 - Ethereum development environment
+- **OpenZeppelin Contracts**: Security-audited contract libraries
+- **Ethers.js**: ^6.4.0 - Ethereum library for contract interaction
+
+#### Development Tools
+- **Hardhat Toolbox**: Complete development suite
+  - Testing framework
+  - Gas reporter
+  - Contract size checker
+  - Coverage tools
+- **Slither**: Static security analyzer
+- **Solhint**: Solidity linter for best practices
+
+#### Testing & Quality
+- **Chai**: Assertion library
+- **Mocha**: Test framework
+- **Hardhat Coverage**: Code coverage reporting
+- **Codecov**: Coverage visualization
+
+### Frontend / User Interface
+
+#### SecureDAOVoting React Application
+
+##### Framework & Build Tools
+- **React**: ^18.2.0 - Modern UI library with hooks and functional components
+- **React DOM**: ^18.2.0 - React rendering for web
+- **Vite**: ^5.0.0 - Next-generation frontend build tool
+  - Lightning-fast HMR (Hot Module Replacement)
+  - Optimized production builds
+  - Built-in TypeScript support
+
+##### Web3 Integration
+- **FHEVM SDK**: Custom SDK for Fully Homomorphic Encryption
+  - Framework-agnostic encryption/decryption utilities
+  - React hooks for easy integration (`useFhevm`)
+  - Context API for state management
+  - Type-safe TypeScript interfaces
+- **Ethers.js**: ^6.4.0 - Blockchain interaction library
+  - Contract calls and transactions
+  - Wallet connection (MetaMask)
+  - Event listening and filtering
+
+##### State Management
+- **React Context API**: Global state management
+  - WalletContext - Wallet connection and account state
+  - ContractContext - Smart contract interaction
+  - Custom hooks: `useWallet`, `useContract`
+
+##### Development Tools
+- **TypeScript**: ^5.0.0 - Type safety and better DX
+- **ESLint**: ^8.0.0 - Code quality and consistency
+- **Vite Plugin React**: ^4.2.0 - Fast refresh and optimization
+
+##### UI/UX Features
+- **Responsive Design**: Mobile-first CSS architecture
+- **Glass-morphism Effects**: Modern UI aesthetics
+- **Gradient Themes**: Purple/blue gradient color scheme
+- **Component Architecture**: Modular, reusable components
+  - WalletConnect - Wallet integration UI
+  - Dashboard - Voting statistics overview
+  - ProposalsList - Governance proposals display
+  - CreateProposal - Proposal creation form
+  - VotePanel - Commit-reveal voting interface
+  - QueryPanel - Proposal query and results
+
+### DevOps & CI/CD
+
+#### Version Control & Collaboration
+- **Git**: Source control
+- **GitHub**: Repository hosting
+- **Husky**: ^8.0.0 - Git hooks automation
+- **lint-staged**: Pre-commit quality gates
+
+#### Continuous Integration
+- **GitHub Actions**: CI/CD pipeline
+  - 5 parallel jobs for faster builds
+  - Multi-version testing (Node.js 18.x, 20.x)
+  - Automated testing and linting
+  - Coverage reporting
+  - Security scanning
+
+#### Code Quality Tools
+- **Prettier**: Code formatting
+- **ESLint**: JavaScript/TypeScript linting
+- **Solhint**: Solidity linting
+- **Commitlint**: Commit message standards
+
+### Deployment & Hosting
+
+#### Smart Contract Deployment
+- **Sepolia Testnet**: Ethereum test network
+- **Hardhat Deploy**: Deployment scripting
+- **Etherscan**: Contract verification and exploration
+
+#### Frontend Deployment
+- **Vercel**: Serverless hosting platform
+  - Automatic deployments from Git
+  - Edge network CDN
+  - Zero-config deployment
+  - Custom domain support
+
+### Project Structure
+
+```
+Project Root
+├── contracts/                 # Smart contracts (Solidity)
+│   └── SecureDAOVoting.sol   # Main DAO voting contract
+│
+├── scripts/                   # Deployment & interaction scripts
+│   ├── deploy.js             # Contract deployment
+│   └── interact.js           # Contract interaction examples
+│
+├── test/                      # Smart contract tests
+│   └── SecureDAOVoting.test.js  # 72+ test cases
+│
+├── SecureDAOVoting/          # React frontend application
+│   ├── src/
+│   │   ├── components/       # React components
+│   │   │   ├── WalletConnect.jsx
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── ProposalsList.jsx
+│   │   │   ├── CreateProposal.jsx
+│   │   │   ├── VotePanel.jsx
+│   │   │   └── QueryPanel.jsx
+│   │   ├── hooks/            # Custom React hooks
+│   │   │   ├── useWallet.jsx
+│   │   │   └── useContract.jsx
+│   │   ├── styles/           # CSS stylesheets
+│   │   ├── App.jsx           # Main app component
+│   │   └── main.jsx          # Entry point
+│   ├── index-react.html      # HTML entry
+│   ├── vite.config.js        # Vite configuration
+│   └── package.json          # Frontend dependencies
+│
+├── fhevm-react-template/     # FHEVM SDK & templates
+│   ├── packages/fhevm-sdk/   # Core SDK
+│   │   ├── src/
+│   │   │   ├── client.ts     # FHEVM client
+│   │   │   ├── hooks/        # React hooks
+│   │   │   └── adapters/     # Framework adapters
+│   │   └── package.json
+│   ├── examples/             # Example applications
+│   └── templates/            # Starter templates
+│
+├── .github/workflows/        # CI/CD pipelines
+├── hardhat.config.js         # Hardhat configuration
+└── package.json              # Root dependencies
+```
+
+### Technology Highlights
+
+#### Why React 18 + Vite?
+- ⚡ **Performance**: Vite's instant server start and HMR
+- 🎯 **Modern Hooks**: Simplified state management
+- 🔧 **Developer Experience**: Fast feedback loop
+- 📦 **Optimized Builds**: Tree-shaking and code splitting
+
+#### Why FHEVM SDK?
+- 🔐 **Privacy**: Fully homomorphic encryption support
+- 🎨 **Framework Agnostic**: Works with React, Vue, Node.js
+- 🛠️ **Developer Friendly**: Wagmi-like API design
+- 📚 **Type Safe**: Full TypeScript support
+
+#### Why Hardhat?
+- 🧪 **Testing**: Comprehensive testing framework
+- 🔍 **Debugging**: Stack traces and console.log support
+- 🚀 **Deployment**: Flexible deployment scripts
+- 🔌 **Plugins**: Rich ecosystem of plugins
+
+---
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -190,6 +379,35 @@ npm run verify
 # Interact with contract
 npm run interact
 ```
+
+### Run React Frontend
+
+```bash
+# Navigate to React application
+cd SecureDAOVoting
+
+# Install dependencies
+npm install
+
+# Start development server (with HMR)
+npm run dev
+
+# Access application at http://localhost:3000
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+**Frontend Features:**
+- 🎨 Modern React 18 with hooks
+- ⚡ Lightning-fast Vite dev server
+- 🔐 FHEVM SDK integration
+- 🌐 MetaMask wallet connection
+- 📊 Real-time voting dashboard
+- 🗳️ Commit-reveal voting interface
 
 ---
 
@@ -772,6 +990,26 @@ npm run size                 # Contract size analysis
 npm run validate             # Full validation (lint + test + security)
 ```
 
+### Frontend Development Commands
+
+```bash
+# Navigate to React app
+cd SecureDAOVoting
+
+# Development
+npm run dev                  # Start dev server with HMR
+npm run build                # Production build
+npm run preview              # Preview production build
+
+# Code Quality
+npm run lint                 # ESLint check
+npm run type-check           # TypeScript validation
+
+# Dependencies
+npm install                  # Install all dependencies
+npm update                   # Update dependencies
+```
+
 ### Pre-commit Hooks
 
 Husky automatically runs before each commit:
@@ -1174,10 +1412,18 @@ npm run performance
 ## 🔗 Resources & Links
 
 ### Documentation
+
+**Smart Contracts:**
 - 📖 [Hardhat Documentation](https://hardhat.org/docs)
 - 📖 [Ethers.js Documentation](https://docs.ethers.org/)
 - 📖 [Solidity Documentation](https://docs.soliditylang.org/)
 - 📖 [OpenZeppelin Contracts](https://docs.openzeppelin.com/contracts/)
+
+**Frontend (React):**
+- 📖 [React 18 Documentation](https://react.dev/)
+- 📖 [Vite Documentation](https://vitejs.dev/)
+- 📖 [FHEVM SDK Guide](./fhevm-react-template/packages/fhevm-sdk/README.md)
+- 📖 [React Frontend README](./SecureDAOVoting/README-REACT.md)
 
 ### Networks
 - 🌐 [Sepolia Testnet](https://sepolia.dev/)
@@ -1185,10 +1431,18 @@ npm run performance
 - 🌐 [Sepolia Etherscan](https://sepolia.etherscan.io/)
 
 ### Tools
+
+**Backend:**
 - 🔧 [Hardhat Toolbox](https://hardhat.org/hardhat-runner/plugins/nomicfoundation-hardhat-toolbox)
 - 🔧 [Solhint](https://github.com/protofire/solhint)
 - 🔧 [Slither](https://github.com/crytic/slither)
 - 🔧 [Codecov](https://codecov.io/)
+
+**Frontend:**
+- 🔧 [Vite](https://vitejs.dev/) - Build tool
+- 🔧 [MetaMask](https://metamask.io/) - Wallet integration
+- 🔧 [React DevTools](https://react.dev/learn/react-developer-tools) - Debugging
+- 🔧 [ESLint](https://eslint.org/) - Code linting
 
 ### Community
 - 💬 GitHub Issues
@@ -1258,14 +1512,25 @@ This is **experimental software** designed for educational and development purpo
 ## 🙏 Acknowledgments
 
 ### Built With
+
+**Backend:**
 - **Hardhat** - Ethereum development environment
 - **OpenZeppelin** - Secure contract libraries
 - **Ethers.js** - Ethereum library
 - **Mocha & Chai** - Testing framework
 
+**Frontend:**
+- **React 18** - Modern UI library
+- **Vite** - Lightning-fast build tool
+- **FHEVM SDK** - Confidential computation integration
+- **TypeScript** - Type-safe development
+
 ### Special Thanks
 - OpenZeppelin team for secure contract patterns
 - Hardhat team for excellent development tools
+- React team for modern UI framework
+- Vite team for amazing build tools
+- FHEVM community for privacy-preserving technology
 - Ethereum community for continuous innovation
 - All contributors and testers
 
