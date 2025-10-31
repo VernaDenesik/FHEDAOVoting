@@ -13,7 +13,7 @@
 
 ---
 
-**Demo Video**: Available in project repository (`demo.mp4`)
+**Demo Video**:  demo.mp4
 ---
 
 ## 📋 Table of Contents
