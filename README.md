@@ -1,4 +1,4 @@
-# 🗳️ Secure Governance Voting System
+# 🗳️ Advanced Privacy-Preserving Governance System
 
 [![Coverage](https://codecov.io/gh/your-repo/governance-voting/branch/main/graph/badge.svg)](https://codecov.io/gh/your-repo/governance-voting)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -6,8 +6,9 @@
 [![React](https://img.shields.io/badge/React-18.2-61DAFB?logo=react)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-5.0-646CFF?logo=vite)](https://vitejs.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?logo=typescript)](https://www.typescriptlang.org/)
+[![FHE](https://img.shields.io/badge/ZAMA-FHE-purple)](https://www.zama.ai/)
 
-> A privacy-preserving DAO voting platform using cryptographic commit-reveal schemes to ensure fair, manipulation-resistant governance on Ethereum.
+> A next-generation DAO voting platform using **Fully Homomorphic Encryption (FHE)** with Gateway callback architecture, ensuring complete vote privacy, timeout protection, and automatic refund mechanisms.
 
 **Website**: [https://fhedao-voting.vercel.app/](https://fhedao-voting.vercel.app/)
 
@@ -38,118 +39,177 @@
 
 ## ✨ Features
 
-### 🔐 Privacy-Preserving Voting
-- **Commit-Reveal Mechanism** - Two-phase cryptographic voting prevents vote manipulation
-- **Hash-Based Commitments** - Cryptographic proof ensures vote integrity
-- **Hidden Votes** - Individual choices remain private during voting period
-- **Anti-Coercion** - Eliminates vote buying and strategic voting
+### 🔐 FHE-Powered Privacy Voting
+- **Fully Homomorphic Encryption** - Complete vote privacy using ZAMA FHE technology
+- **Gateway Callback Architecture** - Asynchronous decryption with cryptographic proof verification
+- **Zero Information Leakage** - Vote tallies computed without revealing individual choices
+- **Price Obfuscation** - Results hidden until official resolution
+- **Anti-Manipulation** - Eliminates vote buying, coercion, and strategic voting
 
-### 🏛️ Decentralized Governance
-- **Proposal System** - Community-driven governance proposal creation
+### 🛡️ Advanced Failure Handling
+- **Timeout Protection** - Automatic refund triggers if decryption fails (3-day timeout)
+- **Refund Mechanism** - Voters can reclaim stakes if Gateway decryption times out
+- **Emergency Controls** - Owner can manually enable refunds in critical situations
+- **Decryption Status Tracking** - Real-time monitoring of Gateway callback progress
+- **Replay Attack Prevention** - Cryptographic requestId mapping ensures single-use callbacks
+
+### 🏛️ Decentralized Governance with Staking
+- **Proposal System** - Community-driven governance with platform fee (0.01 ETH)
 - **Weighted Democracy** - Token-based voting power for fair representation
+- **Vote Staking** - Minimum stake required per vote (0.001 ETH)
 - **Automatic Execution** - Self-executing proposals upon approval
 - **Full Transparency** - All actions verifiable on blockchain
 
-### 🛡️ Enterprise-Grade Security
-- **72+ Test Cases** - Comprehensive test coverage (>95% target)
-- **Static Analysis** - Automated Slither security scanning
-- **Gas Optimized** - Advanced Yul optimizer for efficiency
-- **Multi-Version Testing** - Validated on Node.js 18.x and 20.x
+### 🔒 Enterprise-Grade Security
+- **Comprehensive Input Validation** - All inputs validated with bounds checking
+- **Overflow Protection** - Explicit limits on weights, stakes, and array sizes
+- **Access Control** - Multi-level permission system (owner, creator, voter)
+- **Reentrancy Protection** - State-first updates before external calls
+- **Cryptographic Verification** - FHE.checkSignatures() validates Gateway callbacks
+- **Audit-Ready Code** - NatSpec comments and security best practices
 
-### ⚡ Developer Experience
-- **Complete Toolchain** - Hardhat + ESLint + Solhint + Prettier
-- **Pre-commit Hooks** - Automated quality gates with Husky
-- **CI/CD Pipeline** - GitHub Actions with 5 parallel jobs
-- **Comprehensive Docs** - 9 documentation files covering all aspects
+### ⚡ Gas & HCU Optimization
+- **Efficient FHE Operations** - Minimized Homomorphic Computation Units (HCU)
+- **Batch Permission Grants** - Single FHE.allowThis() per vote aggregation
+- **Optimized Conditional Logic** - FHE.select() for branching without revelation
+- **Strategic Decryption Batching** - Multiple values decrypted in single request
+- **Gas Reporter Integration** - Track ETH and HCU costs
 
-### 💫 Modern Frontend (NEW)
+### 💫 Modern Frontend (React + FHE SDK)
 - **React 18 Application** - Component-based UI with hooks and context
 - **Vite Build Tool** - Lightning-fast HMR and optimized production builds
-- **FHEVM SDK Integration** - Custom hooks for wallet and contract management
+- **FHEVM SDK Integration** - Custom hooks for FHE encryption and wallet management
 - **Responsive Design** - Mobile-first UI with glass-morphism effects
-- **Real-time Updates** - Live proposal status and voting statistics
+- **Real-time Updates** - Live proposal status, decryption tracking, and refund alerts
 - **TypeScript Ready** - Full type safety for better developer experience
 
 ---
 
 ## 🏗️ Architecture
 
-### System Design
+### Enhanced System Design with FHE & Gateway Callbacks
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                  Governance Voting System                │
-└─────────────────────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────────┐
+│          Advanced Privacy-Preserving Governance             │
+└────────────────────────────────────────────────────────────┘
                            │
-          ┌────────────────┼────────────────┐
-          ▼                ▼                ▼
+          ┌────────────────┼────────────────┬─────────────────┐
+          ▼                ▼                ▼                 ▼
 
-┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
-│   Users/Voters  │  │   Proposal      │  │   Admin/Owner   │
-│                 │  │   Creators      │  │                 │
-└────────┬────────┘  └────────┬────────┘  └────────┬────────┘
-         │                    │                    │
-         └────────────────────┼────────────────────┘
-                              ▼
-                ┌─────────────────────────────┐
-                │  SecureDAOVoting Contract   │
-                │  (Solidity 0.8.24)          │
-                └─────────────┬───────────────┘
+┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
+│   Users/Voters  │  │   Proposal      │  │   Gateway       │  │   Emergency     │
+│                 │  │   Creators      │  │   Oracle        │  │   Controls      │
+└────────┬────────┘  └────────┬────────┘  └────────┬────────┘  └────────┬────────┘
+         │                    │                    │                    │
+         └────────────────────┼────────────────────┼────────────────────┘
+                              ▼                    ▼
+                ┌─────────────────────────────────────┐
+                │  SecureDAOVoting Contract (FHE)     │
+                │  (Solidity 0.8.24 + ZAMA FHE)       │
+                └─────────────┬───────────────────────┘
                               │
-        ┌─────────────────────┼─────────────────────┐
-        ▼                     ▼                     ▼
-┌───────────────┐   ┌──────────────────┐   ┌──────────────┐
-│ Commit Phase  │   │  Reveal Phase    │   │  Execution   │
-│               │   │                  │   │              │
-│ • Hash votes  │   │ • Disclose vote  │   │ • Count      │
-│ • Store hash  │   │ • Verify proof   │   │ • Execute    │
-│ • Time-locked │   │ • Tally results  │   │ • Complete   │
-└───────────────┘   └──────────────────┘   └──────────────┘
+        ┌─────────────────────┼─────────────────────┬──────────────────┐
+        ▼                     ▼                     ▼                  ▼
+┌───────────────┐   ┌──────────────────┐   ┌──────────────┐   ┌──────────────┐
+│ Commit Phase  │   │  Decryption      │   │  Execution   │   │  Refund      │
+│ (FHE Voting)  │   │  Request         │   │              │   │  Mechanism   │
+│               │   │                  │   │              │   │              │
+│ • Encrypt     │   │ • Request from   │   │ • Count      │   │ • Timeout    │
+│   votes (FHE) │   │   Gateway        │   │ • Execute    │   │   triggers   │
+│ • Stake ETH   │   │ • Callback       │   │ • Complete   │   │ • Claim      │
+│ • Aggregate   │   │   verifies proof │   │              │   │   refunds    │
+└───────────────┘   └──────────────────┘   └──────────────┘   └──────────────┘
 ```
 
-### Smart Contract Architecture
+### Smart Contract Architecture with FHE Operations
 
 ```
-SecureDAOVoting.sol
+SecureDAOVoting.sol (Enhanced)
 ├── Proposal Management
-│   ├── createProposal(title, description)
+│   ├── createProposal(title, description) payable
 │   ├── executeProposal(proposalId)
-│   └── getProposal(proposalId) → Proposal
+│   └── getProposal(proposalId) → Proposal (obfuscated before resolution)
 │
-├── Commit-Reveal Voting
-│   ├── commitVote(proposalId, voteHash)
-│   ├── revealVote(proposalId, support, nonce)
-│   └── generateVoteHash(support, nonce) → bytes32
+├── FHE-Encrypted Voting
+│   ├── vote(proposalId, encryptedWeight, voteType, inputProof) payable
+│   ├── processEncryptedVote() internal → FHE operations
+│   └── FHE Operations:
+│       ├── FHE.fromExternal() - Import encrypted weight
+│       ├── FHE.eq() - Encrypted vote type comparison
+│       ├── FHE.select() - Conditional weight addition
+│       ├── FHE.add() - Homomorphic aggregation
+│       └── FHE.allowThis() - Grant decryption permission
+│
+├── Gateway Callback Decryption
+│   ├── requestTallyReveal(proposalId)
+│   ├── resolveTallyCallback(requestId, cleartexts, proof) external
+│   ├── FHE.toBytes32() - Convert for decryption request
+│   ├── FHE.requestDecryption() - Request from Gateway
+│   └── FHE.checkSignatures() - Verify callback authenticity
+│
+├── Failure Handling & Refunds
+│   ├── triggerTimeoutRefund(proposalId)
+│   ├── claimRefund(proposalId)
+│   └── emergencyEnableRefund(proposalId) onlyOwner
 │
 ├── Voter Weight Management
 │   ├── setVoterWeight(voter, weight)
+│   ├── setMultipleVoterWeights(voters[], weights[])
 │   └── getVoterWeight(voter) → uint256
 │
-├── System Controls
-│   ├── setPaused(paused)
-│   └── setMinVotingPower(minPower)
+├── Security & Validation
+│   ├── Input Validation (bounds checking)
+│   ├── Overflow Protection (max limits)
+│   ├── Access Control (owner, creator, voter)
+│   └── Reentrancy Protection (state-first updates)
 │
 └── View Functions
-    ├── hasVoted(proposalId, voter) → bool
-    ├── getVotingStatus(proposalId) → VotingStatus
-    └── proposalCount() → uint256
+    ├── hasUserVoted(proposalId, voter) → bool
+    ├── hasUserClaimed(proposalId, voter) → bool
+    ├── getVotingStatus(proposalId) → string
+    ├── getDecryptionStatus(proposalId) → (requested, completed, timedOut, ...)
+    ├── getUserStake(proposalId, user) → uint256
+    └── getCurrentTime() → uint256
 ```
 
-### Data Flow
+### Data Flow with FHE & Gateway
 
 ```
 1. Proposal Creation
-   User → createProposal() → Store Proposal → Emit ProposalCreated
+   Creator → createProposal() + Platform Fee → Initialize FHE Counters → Emit ProposalCreated
 
-2. Vote Commitment
-   Voter → Generate Hash → commitVote() → Store Hash → Emit VoteCommitted
+2. Encrypted Vote Submission
+   Voter → Generate FHE Encrypted Weight → vote() + Stake → FHE Aggregation:
+       • FHE.fromExternal(encryptedWeight, proof)
+       • FHE.eq(voteType, 1) → isYes
+       • FHE.select(isYes, weight, 0) → addition
+       • FHE.add(yesVotes, addition)
+       • FHE.allowThis(yesVotes)
+   → Emit VoteCommitted
 
-3. Vote Revelation
-   Voter → revealVote() → Verify Hash → Update Tally → Emit VoteRevealed
+3. Gateway Decryption Request
+   Creator → requestTallyReveal() → FHE.toBytes32(yesVotes, noVotes) →
+   → FHE.requestDecryption(cts, callback) → Gateway Oracle Receives Request
+   → Emit DecryptionRequested
 
-4. Proposal Execution
-   Anyone → executeProposal() → Check Quorum → Execute → Emit ProposalExecuted
+4. Gateway Callback
+   Gateway → resolveTallyCallback(requestId, cleartexts, proof) →
+   → FHE.checkSignatures(requestId, cleartexts, proof) →
+   → Decode (revealedYes, revealedNo) → Update Proposal
+   → Emit DecryptionCompleted
+
+5. Timeout Protection (if Gateway fails)
+   Anyone → triggerTimeoutRefund() after 3 days → Enable Refunds
+   → Voters → claimRefund() → Receive Stake Back
+   → Emit TimeoutRefundTriggered, RefundIssued
+
+6. Proposal Execution (if Gateway succeeded)
+   Anyone → executeProposal() → Check Quorum → Determine Outcome → Execute
+   → Emit ProposalExecuted
 ```
+
+**For detailed architecture documentation, see [ARCHITECTURE.md](docs/ARCHITECTURE.md)**
 
 ---
 
@@ -157,11 +217,26 @@ SecureDAOVoting.sol
 
 ### Backend / Smart Contracts
 
-#### Core Blockchain
+#### Core Blockchain with FHE
 - **Solidity**: ^0.8.24 - Smart contract programming language
+- **ZAMA FHE**: Fully Homomorphic Encryption library
+  - `FHE.sol` - Core FHE operations
+  - `euint64` - Encrypted 64-bit integers
+  - `ebool` - Encrypted booleans
+  - Gateway callback architecture
 - **Hardhat**: ^2.19.0 - Ethereum development environment
 - **OpenZeppelin Contracts**: Security-audited contract libraries
 - **Ethers.js**: ^6.4.0 - Ethereum library for contract interaction
+
+#### FHE Operations Used
+- `FHE.fromExternal()` - Import encrypted values with proof verification
+- `FHE.eq()` - Encrypted equality comparison
+- `FHE.select()` - Conditional selection without revealing condition
+- `FHE.add()` - Homomorphic addition
+- `FHE.allowThis()` - Grant contract decryption permission
+- `FHE.toBytes32()` - Convert for decryption requests
+- `FHE.requestDecryption()` - Gateway oracle requests
+- `FHE.checkSignatures()` - Verify callback authenticity
 
 #### Development Tools
 - **Hardhat Toolbox**: Complete development suite
@@ -310,23 +385,103 @@ Project Root
 
 ### Technology Highlights
 
-#### Why React 18 + Vite?
-- ⚡ **Performance**: Vite's instant server start and HMR
-- 🎯 **Modern Hooks**: Simplified state management
-- 🔧 **Developer Experience**: Fast feedback loop
-- 📦 **Optimized Builds**: Tree-shaking and code splitting
+#### Why ZAMA FHE?
+- 🔐 **Complete Privacy**: Votes remain encrypted throughout aggregation
+- 🎯 **Gateway Architecture**: Decentralized oracle-based decryption
+- 🔧 **Smart Contract Ready**: Seamless Solidity integration
+- 📚 **Production Tested**: Battle-tested encryption library
 
-#### Why FHEVM SDK?
-- 🔐 **Privacy**: Fully homomorphic encryption support
-- 🎨 **Framework Agnostic**: Works with React, Vue, Node.js
-- 🛠️ **Developer Friendly**: Wagmi-like API design
-- 📚 **Type Safe**: Full TypeScript support
+#### Why Gateway Callback Pattern?
+- ⚡ **Asynchronous**: Non-blocking vote tallying
+- 🔒 **Secure**: Cryptographic proof verification
+- 🛡️ **Fault Tolerant**: Timeout protection with refunds
+- 📊 **Transparent**: Real-time decryption status tracking
 
 #### Why Hardhat?
 - 🧪 **Testing**: Comprehensive testing framework
 - 🔍 **Debugging**: Stack traces and console.log support
 - 🚀 **Deployment**: Flexible deployment scripts
 - 🔌 **Plugins**: Rich ecosystem of plugins
+
+---
+
+## 🚀 Innovative Architecture
+
+### Gateway Callback Pattern
+
+This contract implements ZAMA's **Gateway callback architecture** for decentralized FHE decryption:
+
+```
+User Request → Contract Records → Gateway Decrypts → Callback with Proof
+```
+
+**Key Innovations:**
+
+1. **Asynchronous Decryption**
+   - Non-blocking vote aggregation
+   - Cryptographic proof verification
+   - Replay attack prevention
+
+2. **Timeout Protection**
+   - 3-day decryption window
+   - Automatic refund enablement
+   - Emergency owner controls
+
+3. **Failure Recovery**
+   - Voters can reclaim stakes
+   - No funds locked permanently
+   - Transparent status tracking
+
+### Privacy-Preserving Techniques
+
+#### 1. **Division Protection**
+
+Random multiplier prevents information leakage:
+```solidity
+randomMultiplier = keccak256(block.timestamp, block.prevrandao, msg.sender) % 1000 + 1;
+```
+
+#### 2. **Price Obfuscation**
+
+Vote tallies hidden until resolution:
+```solidity
+uint64 displayYes = proposal.isResolved ? proposal.revealedYes : 0;
+```
+
+#### 3. **FHE Conditional Logic**
+
+Homomorphic branching without revelation:
+```solidity
+proposal.yesVotes = FHE.add(proposal.yesVotes, FHE.select(isYes, weight, zero));
+```
+
+### Security Innovations
+
+#### Comprehensive Input Validation
+```solidity
+require(weight > 0 && weight <= 1e18, "Invalid weight");
+require(msg.value >= MIN_STAKE && msg.value <= 100 ether, "Invalid stake");
+require(bytes(title).length > 0 && bytes(title).length <= 200, "Invalid title length");
+```
+
+#### HCU Optimization Strategies
+- Minimized FHE operations per vote (~135 HCU)
+- Batch permission grants
+- Strategic conditional selection
+- Single decryption request for multiple values
+
+### Comparison: Original vs Enhanced
+
+| Feature | Original | Enhanced |
+|---------|----------|----------|
+| **Privacy** | Hash commit-reveal | FHE encryption |
+| **Decryption** | Manual voter reveal | Gateway callback |
+| **Timeout** | None | 3-day automatic refund |
+| **Staking** | None | 0.001 ETH minimum |
+| **Failure Handling** | None | Comprehensive refund mechanism |
+| **Obfuscation** | Hash only | FHE + price hiding |
+| **Gas Costs** | Standard gas | HCU (Homomorphic Computation Units) |
+| **Security** | Basic | Input validation + overflow protection |
 
 ---
 
